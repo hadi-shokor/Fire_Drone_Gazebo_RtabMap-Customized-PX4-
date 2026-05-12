@@ -153,13 +153,11 @@ https://github.com/PX4/px4_msgs
 
 # Demo Video
 
-The repository also includes a complete simulation demo video.
+
 
 Video file:
 
-```text
-
-```
+[![Watch the Demo](images/launch.png)](https://drive.google.com/drive/folders/1yTuVdaP5kOcOwuDsaz31qTsn66X5uuhQ?usp=sharing)
 
 If GitHub supports inline preview on your browser/device, you can open the video directly from the repository.
 
