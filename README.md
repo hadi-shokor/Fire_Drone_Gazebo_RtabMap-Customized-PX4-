@@ -49,7 +49,6 @@ Contains:
 
 - Offboard PX4 control
 - Autonomous waypoint following
-- RTAB-Map planner integration
 - Nav2 path following
 
 ---
@@ -159,7 +158,7 @@ The repository also includes a complete simulation demo video.
 Video file:
 
 ```text
-videos/fire_drone_demo.mp4
+
 ```
 
 If GitHub supports inline preview on your browser/device, you can open the video directly from the repository.
