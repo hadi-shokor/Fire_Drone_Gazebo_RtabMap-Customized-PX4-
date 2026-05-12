@@ -27,6 +27,19 @@ This project combines:
 
 The system was designed for autonomous fire search, mapping, navigation, and fire localization experiments in simulation.
 
+# Dependencies
+
+This project depends on the following software:
+
+- ROS 2 Jazzy
+- Gazebo Harmonic
+- PX4 Autopilot
+- Micro XRCE-DDS Agent
+- RTAB-Map ROS
+- Nav2
+- PCL
+- OpenCV
+
 ---
 
 # Repository Structure
@@ -198,15 +211,51 @@ source install/setup.bash
 
 ---
 
-# Running the System
+# Running the Complete System
 
-Example launch:
+## 1. Start PX4 SITL + Gazebo
 
 ```bash
-ros2 launch fire_drone_bringup full_fire_mapping_mission.launch.py
+PX4_GZ_NO_FOLLOW=1 PX4_GZ_WORLD=city PX4_GZ_MODEL_POSE="-5,2,2,0,0,3.14" make px4_sitl gz_x500_fire_drone
 ```
 
 ---
+
+## 2. Start Micro XRCE Agent
+
+```bash
+MicroXRCEAgent udp4 -p 8888
+```
+
+---
+
+## 3. Launch ROS 2 Fire Drone System
+
+```bash
+ros2 launch fire_drone_bringup full_fire_mapping_mission.launch.py world:=city
+```
+
+Wait until the drone arms and enters OFFBOARD mode.
+
+---
+
+## 4. Navigate to Fire Area
+
+```bash
+ros2 launch fire_drone_navigation navigate_to_area.launch.py
+```
+
+Wait until the navigation process finishes and the drone reaches the fire area.
+
+---
+
+## 5. Start Camera-Based Fire Detection
+
+```bash
+ros2 launch fire_drone_bringup fire_perception_demo.launch.py world:=city
+```
+
+This launches the camera-based fire detection and autonomous fire approach logic.
 
 # Notes
 
